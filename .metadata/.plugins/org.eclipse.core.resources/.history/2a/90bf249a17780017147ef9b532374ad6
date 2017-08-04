@@ -1,0 +1,9 @@
+package com.adactin;
+
+public class AdactinLogin {
+
+	public static void main(String[] args) {
+
+	}
+
+}

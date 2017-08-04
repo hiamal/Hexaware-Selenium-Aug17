@@ -1,0 +1,9 @@
+package com.javalesson;
+
+public class Duck {
+	int height;
+	
+	void run(){
+		System.out.println("Duck Runs");
+	}
+}

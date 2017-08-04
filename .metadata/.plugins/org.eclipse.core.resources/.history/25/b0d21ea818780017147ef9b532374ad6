@@ -1,0 +1,10 @@
+package com.javalesson;
+
+public class TestDuck {
+
+	public static void main(String[] args) {
+		Duck myDuck = new Duck();
+		myDuck.run();
+	}
+
+}
