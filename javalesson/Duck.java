@@ -3,7 +3,7 @@ package com.javalesson;
 public class Duck {
 	int height;
 	
-	void run(){
+	static void run(){
 		System.out.println("Duck Runs");
 	}
 	
