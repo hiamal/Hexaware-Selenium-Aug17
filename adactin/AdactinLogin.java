@@ -1,27 +1,31 @@
 package com.adactin;
 
-import java.util.concurrent.TimeUnit;
-
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AdactinLogin {
-
-	public static void main(String[] args) {
+	static WebDriver driver;
+	static String Ord;
+	
+	static void openHotelApp(){
 		System.setProperty("webdriver.gecko.driver", "C:/Users/Hvuser/Downloads/Selenium/geckodriver.exe");
-		WebDriver driver = new FirefoxDriver();
+		driver = new FirefoxDriver();
 //		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get("http://adactin.com/HotelApp/index.php");
-		
+	}
+	
+	static void login(){
 		driver.findElement(By.id("username")).sendKeys("hiamal007");
 		driver.findElement(By.id("password")).sendKeys("test");
 		driver.findElement(By.id("login")).click();
-
+	}
+	
+	static void booking(){
 		new Select(driver.findElement(By.id("location"))).selectByVisibleText("London");
 		new Select(driver.findElement(By.id("hotels"))).selectByVisibleText("Hotel Creek");
 		new Select(driver.findElement(By.id("room_type"))).selectByVisibleText("Standard");
@@ -48,16 +52,30 @@ public class AdactinLogin {
 		driver.findElement(By.id("book_now")).click();
 		WebDriverWait wait = new WebDriverWait(driver,10);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("order_no")));
-		String Ord = driver.findElement(By.id("order_no")).getAttribute("value");
+		Ord = driver.findElement(By.id("order_no")).getAttribute("value");
 		driver.findElement(By.id("my_itinerary")).click();
-		
+	}
+
+	static void cancel(){
 		driver.findElement(By.id("order_id_text")).sendKeys(Ord);
 		driver.findElement(By.id("search_hotel_id")).click();
 		driver.findElement(By.id("check_all")).click();
 		driver.findElement(By.name("cancelall")).click();
-		driver.switchTo().alert().accept();
-		
+		Alert alert = driver.switchTo().alert();
+		alert.accept();
+	}
+	
+	static void logout(){
+		driver.findElement(By.linkText("Logout")).click();
 		driver.quit();
+	}
+
+	public static void main(String[] args) {
+		openHotelApp();
+		login();
+		booking();
+		cancel();
+		logout();
 	}
 
 }
