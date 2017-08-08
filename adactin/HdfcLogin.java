@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class AxisLogin {
+public class HdfcLogin {
 
 	public static void main(String[] args) throws InterruptedException {
 		System.setProperty("webdriver.gecko.driver", "C:/Users/Hvuser/Downloads/Selenium/geckodriver.exe");
@@ -23,10 +23,10 @@ public class AxisLogin {
 			System.out.println(handle);
 			driver.switchTo().window(handle);
 		}
-		new WebDriverWait(driver,10).until(ExpectedConditions.elementToBeClickable(By.xpath("(//a[text()='Continue to NetBanking'])[2]")));
+		new WebDriverWait(driver,5).until(ExpectedConditions.elementToBeClickable(By.xpath("(//a[text()='Continue to NetBanking'])[2]")));
+		Thread.sleep(1000);
 		driver.findElement(By.xpath("(//a[text()='Continue to NetBanking'])[2]")).click();
 		driver.switchTo().frame("login_page");
 		driver.findElement(By.className("input_password")).sendKeys("48474847");
 	}
-
 }

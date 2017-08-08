@@ -9,23 +9,23 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AdactinLogin {
-	static WebDriver driver;
+	public static WebDriver driver;
 	static String Ord;
 	
-	static void openHotelApp(){
+	public static void openHotelApp(){
 		System.setProperty("webdriver.gecko.driver", "C:/Users/Hvuser/Downloads/Selenium/geckodriver.exe");
 		driver = new FirefoxDriver();
 //		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		driver.get("http://adactin.com/HotelApp/index.php");
 	}
 	
-	static void login(){
-		driver.findElement(By.id("username")).sendKeys("hiamal007");
-		driver.findElement(By.id("password")).sendKeys("test");
+	public static void login(String username, String password){
+		driver.get("http://adactin.com/HotelApp/index.php");
+		driver.findElement(By.id("username")).sendKeys(username);
+		driver.findElement(By.id("password")).sendKeys(password);
 		driver.findElement(By.id("login")).click();
 	}
 	
-	static void booking(){
+	public static void booking(){
 		new Select(driver.findElement(By.id("location"))).selectByVisibleText("London");
 		new Select(driver.findElement(By.id("hotels"))).selectByVisibleText("Hotel Creek");
 		new Select(driver.findElement(By.id("room_type"))).selectByVisibleText("Standard");
@@ -56,7 +56,7 @@ public class AdactinLogin {
 		driver.findElement(By.id("my_itinerary")).click();
 	}
 
-	static void cancel(){
+	public static void cancel(){
 		driver.findElement(By.id("order_id_text")).sendKeys(Ord);
 		driver.findElement(By.id("search_hotel_id")).click();
 		driver.findElement(By.id("check_all")).click();
@@ -65,14 +65,13 @@ public class AdactinLogin {
 		alert.accept();
 	}
 	
-	static void logout(){
+	public static void logout(){
 		driver.findElement(By.linkText("Logout")).click();
-		driver.quit();
 	}
 
 	public static void main(String[] args) {
 		openHotelApp();
-		login();
+		login("hiamal007", "test");
 		booking();
 		cancel();
 		logout();

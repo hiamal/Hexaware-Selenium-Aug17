@@ -20,5 +20,4 @@ public class Citibank {
 //		new WebDriverWait(driver,10).until(ExpectedConditions.elementToBeClickable(By.className("txtSign")));
 //		driver.findElement(By.className("txtSign")).click();
 	}
-
 }
