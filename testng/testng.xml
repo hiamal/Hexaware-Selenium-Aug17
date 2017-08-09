@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="example suite 1" verbose="1" parallel = "tests">
+  <test name="Test suite 1" >
+   	<parameter name="sUsername" value="hiamal007"/>
+	<parameter name="sPassword" value="test"/>
+	
+    <classes>
+      <class name="com.testng.AdactinLoginTest"/>
+    </classes>
+ </test>
+ <test name="Test suite 2" >
+   	<parameter name="sUsername" value="hiamal007"/>
+	<parameter name="sPassword" value="test"/>
+	
+    <classes>
+      <class name="com.testng.AdactinLoginTest"/>
+    </classes>
+ </test>
+</suite>
+
+

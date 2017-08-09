@@ -12,19 +12,21 @@ import org.testng.annotations.Test;
 import com.adactin.AdactinLogin;
 
 public class AdactinLoginTest {
+	AdactinLogin adactinLogin;
 	
   @BeforeClass
   public void openHotelAppTest() {
-	  AdactinLogin.openHotelApp();
+	  adactinLogin = new AdactinLogin();
+	  adactinLogin.openHotelApp();
 	  String expected = "AdactIn.com - Hotel Reservation System";
-	  String actual = AdactinLogin.driver.getTitle();
+	  String actual = adactinLogin.driver.getTitle();
 //	  Assert.assertEquals(expected, actual );
   }
   
   @BeforeMethod
   @Parameters({ "sUsername", "sPassword" })
   public void loginTest(String sUsername, String sPassword) {
-	  AdactinLogin.login(sUsername, sPassword);
+	  adactinLogin.login(sUsername, sPassword);
   }
   
   @Test
@@ -39,11 +41,11 @@ public class AdactinLoginTest {
   
   @AfterMethod
   public void logOutTest(){
-	  AdactinLogin.logout();
+	  adactinLogin.logout();
   }
   
   @AfterClass
   public void closeWindowTest(){
-	  AdactinLogin.driver.quit();
+	  adactinLogin.driver.quit();
   }
 }
