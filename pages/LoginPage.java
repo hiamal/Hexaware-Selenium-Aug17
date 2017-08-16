@@ -38,7 +38,7 @@ public class LoginPage {
 	}
 	
 	public void setTxtPassword(String text){
-		txtUsername.clear();
+		txtPassword.clear();
 		txtPassword.sendKeys(text);
 	}
 	
@@ -48,5 +48,11 @@ public class LoginPage {
 	
 	public String getEmptyUsernameError(){
 		return emptyUsernameError.getText();
+	}
+	
+	public void login(){
+		setTxtUsername("hiamal007");
+		setTxtPassword("test");
+		setBtnLogin();
 	}
 }

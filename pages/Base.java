@@ -8,6 +8,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class Base {
 	static WebDriver driver;
 	
+	
+	
 	static void openBrowser(){
 		System.setProperty("webdriver.gecko.driver", "C:/Users/Hvuser/Downloads/Selenium/geckodriver.exe");
 		driver = new FirefoxDriver();
